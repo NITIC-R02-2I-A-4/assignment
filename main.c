@@ -3,9 +3,13 @@
 #include "lib/csvloader/csvloader.h"
 
 int main() {
-
-	FILE *fp = fopen("list.csv", "r");
-	loaduser(fp);
-	fclose(fp);
+	User *user;
+	int result;
+	result = loaduser("list.csv", user);
+	if(result < 0) {
+		printf("Loaduser function returned an negative value (means failed to load file)!\n");
+	} else {
+		printf("Loaduser has loaded %d user(s).\n", result);
+	}
 	return 0;
 }

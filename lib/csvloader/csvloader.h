@@ -3,12 +3,15 @@
 
 #include <stdio.h>
 
+#define MAX_USER_LENGTH
+#define MAX_CSV_SIZE 256
+
 typedef struct {
 	int number;
 	char name[255];
 	char school[255];
 } User;
 
-User *loaduser(char*);
+int loaduser(const char*, User*);
 
 #endif
