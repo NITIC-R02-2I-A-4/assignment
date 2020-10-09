@@ -8,10 +8,10 @@ ifndef CSV_LOADER_HEADER
 #define MAX_STR_SIZE 256
 
 typedef struct {
-	int number;
-	char name[MAX_STR_SIZE];
-	char ruby[MAX_STR_SIZE];
-	char school[MAX_STR_SIZE];
+  int number;
+  char name[MAX_STR_SIZE];
+  char ruby[MAX_STR_SIZE];
+  char school[MAX_STR_SIZE];
 } User;
 
 int loaduser(const char*, User*);
