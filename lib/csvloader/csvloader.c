@@ -64,3 +64,28 @@ int saveuser(const char* path, const UserList* user) {
 
   return 0;
 }
+
+int adduser(
+    UserList *user,
+    int number, const char *name, const char *ruby, const char *school
+) {
+  if((user->number + 1) >= MAX_CSV_SIZE) return 1;
+  user->users[user->number].number = number;
+  strcpy(user->users[user->number].name, name);
+  strcpy(user->users[user->number].ruby, ruby);
+  strcpy(user->users[user->number].school, school);
+  user->number++;
+  return 0;
+}
+
+int removeuser(UserList *user, int index) {
+  if(index < 0 || index >= user->number) return 1;
+  for(int i = index; i<user->number-1; i++) {
+    user->users[i].number = user->users[i+1].number;
+    strcpy(user->users[i].name, user->users[i+1].name);
+    strcpy(user->users[i].ruby, user->users[i+1].ruby);
+    strcpy(user->users[i].school, user->users[i+1].school);
+  }
+  user->number--;
+  return 0;
+}

@@ -29,11 +29,9 @@ void load(){
 void save() {
   UserList user = {};
   int result = loadfromcsv(&user);
-  user.number = 4;
-  user.users[3].number = 4;
-  strcpy(user.users[3].name, "D次郎");
-  strcpy(user.users[3].ruby, "ディージロウ");
-  strcpy(user.users[3].school, "G中学");
+  adduser(&user, 100, "A", "B", "C");
+  adduser(&user, 101, "D", "E", "F");
+  removeuser(&user, 1);
   saveuser("list-update.csv", &user);
 }
 

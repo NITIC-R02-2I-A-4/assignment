@@ -21,5 +21,7 @@ typedef struct {
 
 int loaduser(const char*, UserList*);
 int saveuser(const char*, const UserList*);
+int adduser(UserList*, int, const char*, const char*, const char*);
+int removeuser(UserList*, int);
 
 #endif
