@@ -9,8 +9,6 @@ typedef struct {
 	char school[255];
 } User;
 
-User *initializeuser(FILE*);
-User *loaduser(FILE*);
-int saveuser(FILE*, User*);
+User *loaduser(char*);
 
 #endif
