@@ -14,18 +14,30 @@ int loaduser(const char *path, User *dest) {
 		return -1;
 	}
 	
-	// [TEST] Load and print the whole line of the file with index of line
+	User user[MAX_USER_LENGTH] = {};
+	// [TEST] Load, and parse csv
+	//        And print the information with index of the line
 	char row_buffer[MAX_CSV_SIZE];
 	int number = 0;
 	while(fgets(row_buffer, MAX_CSV_SIZE, fp) != NULL){
+		int student_number;
+		char student_name[256], student_school[256];
 		printf("%2d: %s", ++number, row_buffer);
+		sscanf(
+				row_buffer,
+				"%[^,],%d,%s",
+				student_name, &student_number, student_school
+		);
+		printf(
+				"%2d: #%02d %s (from %s)\n",
+				number, student_number, student_name, student_school
+		);
 	}
 
 	// close file stream
 	fclose(fp);
 
 	// [TEST] return empty User struct
-	User user[MAX_USER_LENGTH] = {};
 	dest = user;
 	return number;
 
