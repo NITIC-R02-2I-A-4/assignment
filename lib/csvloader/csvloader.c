@@ -42,3 +42,24 @@ int loaduser(const char *path, User *dest) {
   return number;
 }
 
+int saveuser(const char* path, const User* user, int size) {
+  // Load the file
+  FILE *fp;
+  fp = fopen(path, "w");
+
+  // Check the load was successful
+  // If laod was failure, put error message and return
+  if(fp == NULL) return -1;
+
+  for(int i = 0;i<size;i++) {
+    fprintf(
+      fp, "%d,%s,%s,%s\n",
+      user[i].number, user[i].name,
+      user[i].ruby, user[i].school
+    );
+  }
+
+  fclose(fp);
+
+  return 0;
+}
