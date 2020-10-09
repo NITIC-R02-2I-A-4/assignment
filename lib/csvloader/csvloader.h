@@ -14,7 +14,14 @@ typedef struct {
   char school[MAX_STR_SIZE];
 } User;
 
-int loaduser(const char*, User*);
-int saveuser(const char*, const User*, int size);
+typedef struct {
+  User users[MAX_CSV_SIZE];
+  int number;
+} UserList;
+
+int loaduser(const char*, UserList*);
+int saveuser(const char*, const UserList*);
+int adduser(UserList*, int, const char*, const char*, const char*);
+int removeuser(UserList*, int);
 
 #endif

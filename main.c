@@ -3,7 +3,7 @@
 
 #include "lib/csvloader/csvloader.h"
 
-int loadfromcsv(User *dest) {
+int loadfromcsv(UserList *dest) {
   int result;
   result = loaduser("list.csv", dest);
   if(result < 0) {
@@ -15,24 +15,24 @@ int loadfromcsv(User *dest) {
 }
 
 void load(){
-  User user[MAX_CSV_SIZE];
-  int result = loadfromcsv(user);
+  UserList user = {};
+  int result = loadfromcsv(&user);
   for(int i = 0;i<result;i++){
     printf(
         "%2d: #%2d, %s[%s] (from %s)\n", i,
-        user[i].number, user[i].name, user[i].ruby, user[i].school
+        user.users[i].number, user.users[i].name,
+        user.users[i].ruby, user.users[i].school
     );
   }
 }
 
 void save() {
-  User user[MAX_CSV_SIZE];
-  int result = loadfromcsv(user);
-  user[3].number = 4;
-  strcpy(user[3].name, "D次郎");
-  strcpy(user[3].ruby, "ディージロウ");
-  strcpy(user[3].school, "G中学");
-  saveuser("list-update.csv", user, 4);
+  UserList user = {};
+  int result = loadfromcsv(&user);
+  adduser(&user, 100, "A", "B", "C");
+  adduser(&user, 101, "D", "E", "F");
+  removeuser(&user, 1);
+  saveuser("list-update.csv", &user);
 }
 
 int main() {
