@@ -1,4 +1,4 @@
-ifndef CSV_LOADER_HEADER
+#ifndef CSV_LOADER_HEADER
 #define CSV_LOADER_HEADER
 
 #include <stdio.h>
