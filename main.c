@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #include "lib/csvloader/csvloader.h"
 
@@ -24,7 +25,18 @@ void load(){
   }
 }
 
+void save() {
+  User user[MAX_CSV_SIZE];
+  int result = loadfromcsv(user);
+  user[3].number = 4;
+  strcpy(user[3].name, "D次郎");
+  strcpy(user[3].ruby, "ディージロウ");
+  strcpy(user[3].school, "G中学");
+  saveuser("list-update.csv", user, 4);
+}
+
 int main() {
   load();
+  save();
   return 0;
 }

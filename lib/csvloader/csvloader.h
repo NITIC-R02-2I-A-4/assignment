@@ -15,5 +15,6 @@ typedef struct {
 } User;
 
 int loaduser(const char*, User*);
+int saveuser(const char*, const User*, int size);
 
 #endif
