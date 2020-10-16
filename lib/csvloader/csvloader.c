@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int loaduser(const char *path, char name[][MAX_STR_SIZE], char ruby[][MAX_STR_SIZE], char jsc[][MAX_STR_SIZE]) {
+int loaduser(const char *path, char name[][MAX_STR_SIZE], char roma[][MAX_STR_SIZE], char jhc[][MAX_STR_SIZE]) {
 
   // Load the file
   FILE *fp;
@@ -21,15 +21,15 @@ int loaduser(const char *path, char name[][MAX_STR_SIZE], char ruby[][MAX_STR_SI
     int student_number;
     char student_name[MAX_STR_SIZE];
     char student_school[MAX_STR_SIZE];
-    char student_ruby[MAX_STR_SIZE];
+    char student_roma[MAX_STR_SIZE];
     sscanf(
         row_buffer,
         "%d,%[^,],%[^,],%s",
-        &student_number, student_name, student_ruby, student_school
+        &student_number, student_name, student_roma, student_school
     );
 		strcpy(name[student_number - 1], student_name);
-		strcpy(ruby[student_number - 1], student_ruby);
-		strcpy(jsc[student_number - 1], student_school);
+		strcpy(roma[student_number - 1], student_roma);
+		strcpy(jhc[student_number - 1], student_school);
 		number++;
   }
 
@@ -42,7 +42,7 @@ int loaduser(const char *path, char name[][MAX_STR_SIZE], char ruby[][MAX_STR_SI
 
 int saveuser(
 		const char* path, int number,
-		char name[][MAX_STR_SIZE], char ruby[][MAX_STR_SIZE], char jsc[][MAX_STR_SIZE], int size) {
+		char name[][MAX_STR_SIZE], char roma[][MAX_STR_SIZE], char jhc[][MAX_STR_SIZE], int size) {
   // Load the file
   FILE *fp;
   fp = fopen(path, "w");
@@ -55,7 +55,7 @@ int saveuser(
   for(int i = 0;i<size;i++) {
     fprintf(
       fp, "%d,%s,%s,%s\n",
-			i, name[i], ruby[i], jsc[i]
+			i, name[i], roma[i], jhc[i]
     );
   }
 

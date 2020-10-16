@@ -7,9 +7,9 @@
 #define MAX_CSV_SIZE 256
 #define MAX_STR_SIZE 256
 
-int loaduser(const char *path, char name[][MAX_STR_SIZE], char ruby[][MAX_STR_SIZE], char jsc[][MAX_STR_SIZE]);
+int loaduser(const char *path, char name[][MAX_STR_SIZE], char roma[][MAX_STR_SIZE], char jhc[][MAX_STR_SIZE]);
 int saveuser(
 		const char* path, int number,
-		char name[][MAX_STR_SIZE], char ruby[][MAX_STR_SIZE], char jsc[][MAX_STR_SIZE], int size);
+		char name[][MAX_STR_SIZE], char roma[][MAX_STR_SIZE], char jhc[][MAX_STR_SIZE], int size);
 
 #endif
