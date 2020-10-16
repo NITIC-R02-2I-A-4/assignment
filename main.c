@@ -2,6 +2,7 @@
 #include <string.h>
 
 #include "lib/csvloader/csvloader.h"
+#include "lib/macros.h"
 
 int loadfromcsv(char name[][MAX_STR_SIZE], char roma[][MAX_STR_SIZE], char jhc[][MAX_STR_SIZE]) {
   int result;

@@ -2,10 +2,7 @@
 #define CSV_LOADER_HEADER
 
 #include <stdio.h>
-
-#define MAX_USR_LENGTH 40
-#define MAX_CSV_SIZE 256
-#define MAX_STR_SIZE 256
+#include "../macros.h"
 
 int loaduser(const char *path, char name[][MAX_STR_SIZE], char roma[][MAX_STR_SIZE], char jhc[][MAX_STR_SIZE]);
 int saveuser(
