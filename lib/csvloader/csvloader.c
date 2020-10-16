@@ -2,8 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 
-int loaduser(const char *path, UserList *dest) {
+int loaduser(const char *path, char name[][MAX_STR_SIZE], char ruby[][MAX_STR_SIZE], char jsc[][MAX_STR_SIZE]) {
 
+	printf("Load user has been called...\n");
   // Load the file
   FILE *fp;
   fp = fopen(path, "r");
@@ -11,13 +12,13 @@ int loaduser(const char *path, UserList *dest) {
   // Check the load was successful
   if(fp == NULL) {
     // If laod was failure, put error message and return
-    dest = NULL;
     return -1;
   }
 
   // Load, parse csv, and store to user array
-  char row_buffer[MAX_CSV_SIZE];
   int number = 0;
+	char row_buffer[MAX_STR_SIZE * 4 + 3];
+	printf("Loading...\n");
   while(fgets(row_buffer, MAX_CSV_SIZE, fp) != NULL){
     int student_number;
     char student_name[MAX_STR_SIZE];
@@ -28,13 +29,21 @@ int loaduser(const char *path, UserList *dest) {
         "%d,%[^,],%[^,],%s",
         &student_number, student_name, student_ruby, student_school
     );
-    dest->users[number].number = student_number;
-    strcpy(dest->users[number].name, student_name);
-    strcpy(dest->users[number].ruby, student_ruby);
-    strcpy(dest->users[number].school, student_school);
-    number++;
+		printf("Reading:    %d\n", student_number);
+		printf("      NAME: \"%s\"(%lu) -> \n", student_name, strlen(student_name));
+		printf("      RUBY: \"%s\"(%lu) -> \n", student_ruby, strlen(student_ruby));
+		printf("    SCHOOL: \"%s\"(%lu) -> \n", student_school, strlen(student_school));
+		strcpy(name[student_number - 1], student_name);
+		printf("   Name copied. (%s)\n", name[student_number - 1]);
+		strcpy(ruby[student_number - 1], student_ruby);
+		printf("   Ruby copied. (%s)\n", ruby[student_number - 1]);
+		strcpy(jsc[student_number - 1], student_school);
+		printf("   JSC copied.  (%s)\n", jsc[student_number - 1]);
+		printf("%d\n", student_number);
+		number++;
   }
-  dest->number = number;
+	printf("\"%s\"\n", row_buffer);
+	printf("Done!\n");
 
   // close file stream
   fclose(fp);
@@ -43,7 +52,9 @@ int loaduser(const char *path, UserList *dest) {
   return number;
 }
 
-int saveuser(const char* path, const UserList* user) {
+int saveuser(
+		const char* path, int number,
+		char name[][MAX_STR_SIZE], char ruby[][MAX_STR_SIZE], char jsc[][MAX_STR_SIZE], int size) {
   // Load the file
   FILE *fp;
   fp = fopen(path, "w");
@@ -53,11 +64,15 @@ int saveuser(const char* path, const UserList* user) {
   if(fp == NULL) return -1;
 
   // Print informations to csv
-  for(int i = 0;i<user->number;i++) {
+  for(int i = 0;i<size;i++) {
+		printf("Saving: %d\n", i);
+    fprintf(
+      stdout, "%d,%s,%s,%s\n",
+			i, name[i], ruby[i], jsc[i]
+    );
     fprintf(
       fp, "%d,%s,%s,%s\n",
-      user->users[i].number, user->users[i].name,
-      user->users[i].ruby, user->users[i].school
+			i, name[i], ruby[i], jsc[i]
     );
   }
 
@@ -67,38 +82,3 @@ int saveuser(const char* path, const UserList* user) {
   return 0;
 }
 
-int adduser(
-    UserList *user,
-    int number, const char *name, const char *ruby, const char *school
-) {
-  // Check overflow
-  if((user->number + 1) >= MAX_CSV_SIZE) return 1;
-
-  // Set new user
-  user->users[user->number].number = number;
-  strcpy(user->users[user->number].name, name);
-  strcpy(user->users[user->number].ruby, ruby);
-  strcpy(user->users[user->number].school, school);
-
-  // Add counter
-  user->number++;
-
-  return 0;
-}
-
-int removeuser(UserList *user, int index) {
-  // Check the index is valid
-  if(index < 0 || index >= user->number) return 1;
-
-  // Shift user informations
-  for(int i = index; i<user->number-1; i++) {
-    user->users[i].number = user->users[i+1].number;
-    strcpy(user->users[i].name, user->users[i+1].name);
-    strcpy(user->users[i].ruby, user->users[i+1].ruby);
-    strcpy(user->users[i].school, user->users[i+1].school);
-  }
-
-  // Decrement counter
-  user->number--;
-  return 0;
-}

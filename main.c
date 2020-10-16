@@ -3,9 +3,11 @@
 
 #include "lib/csvloader/csvloader.h"
 
-int loadfromcsv(UserList *dest) {
+int loadfromcsv(char name[][MAX_STR_SIZE], char ruby[][MAX_STR_SIZE], char jsc[][MAX_STR_SIZE]) {
+	printf("Load from csv has been called.\n");
   int result;
-  result = loaduser("list.csv", dest);
+	printf("Calling loaduser....\n");
+  result = loaduser("list.csv", name, ruby, jsc);
   if(result < 0) {
     printf("Loaduser function returned an negative value (means failed to load file)!\n");
     return 0;
@@ -15,27 +17,36 @@ int loadfromcsv(UserList *dest) {
 }
 
 void load(){
-  UserList user = {};
-  int result = loadfromcsv(&user);
+	printf("hennlo\n");
+	char name[MAX_CSV_SIZE][MAX_STR_SIZE];
+	char ruby[MAX_CSV_SIZE][MAX_STR_SIZE];
+	char jsc[MAX_CSV_SIZE][MAX_STR_SIZE];
+  int result = loadfromcsv(name, ruby, jsc);
   for(int i = 0;i<result;i++){
     printf(
         "%2d: #%2d, %s[%s] (from %s)\n", i,
-        user.users[i].number, user.users[i].name,
-        user.users[i].ruby, user.users[i].school
+        i + 1, name[i], ruby[i], jsc[i]
     );
   }
 }
 
 void save() {
-  UserList user = {};
-  int result = loadfromcsv(&user);
-  adduser(&user, 100, "A", "B", "C");
-  adduser(&user, 101, "D", "E", "F");
-  removeuser(&user, 1);
-  saveuser("list-update.csv", &user);
+	char name[MAX_CSV_SIZE][MAX_STR_SIZE];
+	char ruby[MAX_CSV_SIZE][MAX_STR_SIZE];
+	char jsc[MAX_CSV_SIZE][MAX_STR_SIZE];
+  int result = loadfromcsv(name, ruby, jsc);
+	printf("Writing name...\n");
+	strcpy(name[result], "hoge");
+	printf("Writing ruby...\n");
+	strcpy(ruby[result], "huga");
+	printf("Writing jsc...\n");
+	strcpy(jsc[result], "ABCDE");
+	printf("Saving new csv...\n");
+	saveuser("list-new.csv", result + 1, name, ruby, jsc, result + 1);
 }
 
 int main() {
+	printf("Program started.\n");
   load();
   save();
   return 0;
