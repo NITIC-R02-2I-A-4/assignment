@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include "macros.h"
-print_number_asc(
+void print_number_asc(
   char name[][MAX_STR_SIZE],
   char roma[][MAX_STR_SIZE],
   char jhc[][MAX_STR_SIZE],
@@ -8,8 +8,7 @@ print_number_asc(
 )
 {
   int i;
-  for(i = 0; i >= size; ++i) {
-    printf("name:%s roma:%s jhc:%s\n", name, roma, jhc);
+  for(i = 0; i < size; i++) {
+    printf("name:%s roma:%s jhc:%s\n", name[i], roma[i], jhc[i]);
     }
-  return (name, roma, jhc, size);
 }
