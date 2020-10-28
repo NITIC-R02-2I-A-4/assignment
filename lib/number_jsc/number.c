@@ -8,7 +8,7 @@ void print_number_asc(
 )
 {
   int i;
-  for(i = 0; i >= size; ++i) {
-    printf("name:%s roma:%s jhc:%s\n", name, roma, jhc);
+  for(i = 0; i < size; i++) {
+    printf("name:%s roma:%s jhc:%s\n", name[i], roma[i], jhc[i]);
     }
 }
