@@ -11,7 +11,7 @@ void print_by_jsc(
     int i;
     for(i = 0; i < size; i++){
       if(strcmp(jsc_name, jhc[i]) == 0){
-        printf("%d, %s, %s, %s\n", i + 1, name[i], roma[i], jhc[i]);
+        printf("anntendance number:%d, name:%s, ruby:%s, jhs name:%s\n", i + 1, name[i], roma[i], jhc[i]);
       }
     }
 }
