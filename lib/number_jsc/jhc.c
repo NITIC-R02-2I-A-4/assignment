@@ -9,9 +9,9 @@ void print_by_jsc(
   int size
 ) {
     int i;
-    for(i = 0; i < 256; i++){
+    for(i = 0; i < size; i++){
       if(strcmp(jsc_name, jhc[i]) == 0){
-        printf("%s, %s, %s", name[i], roma[i], jhc[i]);
+        printf("%d, %s, %s, %s\n", i + 1, name[i], roma[i], jhc[i]);
       }
     }
 }
