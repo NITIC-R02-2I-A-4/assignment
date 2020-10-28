@@ -1,3 +1,5 @@
+#include "lib/macros.h"
+#include "lib/csvloader/csvloader.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -5,7 +7,7 @@ int main() {
 	char name[MAX_CSV_SIZE][MAX_STR_SIZE];
 	char roma[MAX_CSV_SIZE][MAX_STR_SIZE];
 	char jhc[MAX_CSV_SIZE][MAX_STR_SIZE];
-  int result = loadfromcsv(name, roma, jhc);
+  int result = loaduser("list.csv", name, roma, jhc);
 
 int select = 0;
 printf("表示したい項目を選び、数字を入力してください（複数可）\n"
@@ -21,9 +23,6 @@ while(select <= 5){
         break;
     }
     
-    
-
-}
 }
 
   return 0;
