@@ -54,9 +54,9 @@ void sort_by_name_asc(
 	}
 }
 
-int main() {
+/* int main() {
 	char name[][MAX_STR_SIZE] = {"A太郎", "C広斗", "B篤人"};
 	char roma[][MAX_STR_SIZE] = {"A taro", "C hiroto", "B Atsuto"};
 	char jhc[][MAX_STR_SIZE] = {"Iroha School", "Chirinu School", "Wakayo School"};
 	sort_by_name_asc(name, roma, jhc, 3);
-}
+} */
