@@ -56,7 +56,7 @@ int saveuser(
   for(int i = 0;i<size;i++) {
     fprintf(
       fp, "%d,%s,%s,%s\n",
-			i, name[i], roma[i], jhc[i]
+			i + 1, name[i], roma[i], jhc[i]
     );
   }
 
