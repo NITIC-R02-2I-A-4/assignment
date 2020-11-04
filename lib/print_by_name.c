@@ -1,7 +1,5 @@
-#include "macros.h"
-#include <stdio.h>
 #include <string.h>
-int print_by_name(int number, char* query_name,  char name[][MAX_STR_SIZE]) {
+int print_by_name(int number char* query_name,  char name[]) {
 int noa;
 int student_number;
 for(noa = 0; noa < number ; noa++){
