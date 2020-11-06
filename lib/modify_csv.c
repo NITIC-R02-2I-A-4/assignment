@@ -24,7 +24,7 @@ int modify_csv(
   if(cursor < 0) cursor = 0;
   printf("*** 名簿データ 変更ウィザード ***\n");
   while(1) {
-    printf("現在の入力対象出席番号: %02d\n", cursor + 1);
+    printf("入力した学生の数: %02d\n", cursor);
     printf("\n");
     if(cursor < (MAX_USR_LENGTH - 1)) {
       printf("(1)  %02d番の新しい学生情報を登録する\n", cursor + 1);
