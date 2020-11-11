@@ -42,7 +42,7 @@ int loaduser(const char *path, char name[][MAX_STR_SIZE], char roma[][MAX_STR_SI
 }
 
 int saveuser(
-		const char* path, int number,
+		const char* path,
 		char name[][MAX_STR_SIZE], char roma[][MAX_STR_SIZE], char jhc[][MAX_STR_SIZE], int size) {
   // Load the file
   FILE *fp;
@@ -56,7 +56,7 @@ int saveuser(
   for(int i = 0;i<size;i++) {
     fprintf(
       fp, "%d,%s,%s,%s\n",
-			i, name[i], roma[i], jhc[i]
+			i + 1, name[i], roma[i], jhc[i]
     );
   }
 

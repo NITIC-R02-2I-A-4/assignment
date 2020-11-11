@@ -46,10 +46,6 @@ void sort_by_name_asc(
 	int ranking[MAX_USR_LENGTH] = {999};
 	rank(roma, ranking, size);
 	for(int i = 0; i<size;i++) {
-		printf("#%d %s(%s) (@%s)\n", ranking[i], name[i], roma[i], jhc[i]);
-	}
-	printf("---------------------\n");
-	for(int i = 0; i<size;i++) {
 		printf("#%d %s(%s) (@%s)\n", ranking[i], name[ranking[i]], roma[ranking[i]], jhc[ranking[i]]);
 	}
 }

@@ -34,6 +34,14 @@ void print_by_jsc(
   int size
 );
 
+// lib/modify_csv.c
+int modify_csv(
+  char name[][MAX_STR_SIZE],
+  char roma[][MAX_STR_SIZE],
+  char jhc[][MAX_STR_SIZE],
+  int size
+);
+
 int main() {
 	char name[MAX_CSV_SIZE][MAX_STR_SIZE];
 	char roma[MAX_CSV_SIZE][MAX_STR_SIZE];
@@ -47,10 +55,11 @@ printf("(1)　出席番号順の名簿情報\n"
        "(2)　氏名順の名簿情報\n"
        "(3)　出席番号から氏名を表示\n"
        "(4)　氏名から出席番号を表示\n"
-	   "(5)　出身中学から該当人物情報\n");
-	while(select <= 5){
+	   	 "(5)　出身中学から該当人物情報\n"
+		   "(6)  名簿情報を入力");
+	while(select <= 6){
     scanf("%d",&select);
-    if(select < 1 || select > 5){
+    if(select < 1 || select > 6){
         break;
     }
 		switch(select) {
@@ -81,6 +90,10 @@ printf("(1)　出席番号順の名簿情報\n"
 				printf("検索する中学校名を入力してください。");
 				scanf("%s", jhc_name);
 				print_by_jsc(jhc_name, name, roma, jhc, result);
+				break;
+			}
+			case 6: {
+				result = modify_csv(name, roma, jhc, result);
 				break;
 			}
 		}
