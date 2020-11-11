@@ -46,17 +46,13 @@ void sort_by_name_asc(
 	int ranking[MAX_USR_LENGTH] = {999};
 	rank(roma, ranking, size);
 	for(int i = 0; i<size;i++) {
-		printf("#%d %s(%s) (@%s)\n", ranking[i], name[i], roma[i], jhc[i]);
-	}
-	printf("---------------------\n");
-	for(int i = 0; i<size;i++) {
 		printf("#%d %s(%s) (@%s)\n", ranking[i], name[ranking[i]], roma[ranking[i]], jhc[ranking[i]]);
 	}
 }
 
-int main() {
+/* int main() {
 	char name[][MAX_STR_SIZE] = {"A太郎", "C広斗", "B篤人"};
 	char roma[][MAX_STR_SIZE] = {"A taro", "C hiroto", "B Atsuto"};
 	char jhc[][MAX_STR_SIZE] = {"Iroha School", "Chirinu School", "Wakayo School"};
 	sort_by_name_asc(name, roma, jhc, 3);
-}
+} */

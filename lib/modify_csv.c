@@ -87,7 +87,7 @@ int modify_csv(
         break;
       }
       case 0: {
-        saveuser("list.csv", cursor, name, roma, jhc, cursor);
+        saveuser("list.csv", name, roma, jhc, cursor);
         printf("[i] CSVへ情報を書き込みました。ウィザードを終了します。\n");
         return cursor + 1;
       }
@@ -96,7 +96,7 @@ int modify_csv(
   }
 
 }
-
+/*
 int main() {
 	char name[MAX_CSV_SIZE][MAX_STR_SIZE];
 	char roma[MAX_CSV_SIZE][MAX_STR_SIZE];
@@ -104,3 +104,4 @@ int main() {
   int result = loaduser("list.csv", name, roma, jhc);
   modify_csv(name, roma, jhc, result);
 }
+*/
